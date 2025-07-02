@@ -71,7 +71,7 @@ def extrair_features(caminho_audio):
 
     return features
 
-print("Extraindo MFCCs dos áudios aumentados...")
+print("Extraindo features dos áudios...")
 for _, row in tqdm(df.iterrows(), total=len(df)):
     caminho = os.path.join(AUDIO_PATH, row['filename'])
     try:

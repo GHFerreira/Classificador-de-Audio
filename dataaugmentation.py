@@ -50,7 +50,7 @@ def normalize_audio(y):
         y = y / max_abs
     return y
 
-print("🎧 Aplicando aumentos de dados mais calibrados e diversificados...")
+print(" Aplicando aumento de dados...")
 for idx, row in tqdm(df.iterrows(), total=len(df)):
     filename = row['filename']
     path = os.path.join(audio_path, filename)
