@@ -8,7 +8,8 @@ AUDIO_PATH = "./ESC-50-master/audio"
 
 # Classes
 CLASSES_USADAS = [
-    'dog', 'cow', 'cat', 'sheep',
+    'dog', 'cow', 'cat',
+
     'crying_baby', 'clapping', 'coughing',
     'door_wood_knock', 'keyboard_typing', 'siren', 'clock_alarm', 'church_bells'
 ]
