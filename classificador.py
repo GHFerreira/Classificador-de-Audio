@@ -8,7 +8,6 @@ from sklearn.metrics import classification_report
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.callbacks import EarlyStopping
 from joblib import dump
 import warnings
 import pickle
@@ -59,9 +58,6 @@ model = Sequential([
 
 # Compilar o modelo
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-# Early stopping para evitar overfitting
-#early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
 # Treinamento
 history = model.fit(
