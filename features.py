@@ -10,15 +10,15 @@ import os
 import shutil
 
 orig = './ESC-50-master/audio'
-dest = './ESC-50-master/audio_augmented'
+dest = './ESC-50-master/audio_aumentado'
 
 for f in os.listdir(orig):
     if f.endswith('.wav'):
         shutil.copy(os.path.join(orig, f), os.path.join(dest, f))
 
 # Parâmetros
-CSV_AUMENTADO = "./esc50_aumentado_calibrado.csv"
-AUDIO_PATH = "./ESC-50-master/audio_augmented"  # contém originais e aumentados
+CSV_AUMENTADO = "./data/esc50_aumentado.csv"
+AUDIO_PATH = "./ESC-50-master/audio_aumentado"  # contém originais e aumentados
 N_MFCC = 13
 
 # Carregar csv
@@ -40,13 +40,13 @@ def extrair_features(caminho_audio):
     delta_mean = np.mean(delta, axis=1)
     delta2_mean = np.mean(delta2, axis=1)
 
-    # Spectral Features
+    # Spectral
     spec_centroid = np.mean(librosa.feature.spectral_centroid(y=y, sr=sr))
     spec_bw = np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr))
     contrast = np.mean(librosa.feature.spectral_contrast(y=y, sr=sr), axis=1)
     rolloff = np.mean(librosa.feature.spectral_rolloff(y=y, sr=sr))
 
-    # ZCR
+    # Zero Crossing Rate
     zcr = np.mean(librosa.feature.zero_crossing_rate(y))
 
     # RMS Energy
@@ -57,16 +57,17 @@ def extrair_features(caminho_audio):
 
     # Concatenar todas as features
     features = np.concatenate([
-        mfcc_mean,      # 13
-        delta_mean,     # 13
-        delta2_mean,    # 13
-        [spec_centroid],
-        [spec_bw],
-        contrast,       # 7 (por padrão)
-        [rolloff],
-        [zcr],
-        [rms],
-        chroma          # 12
+        mfcc_mean,       # 13 coeficientes MFCC
+        delta_mean,      # 13 coeficientes Delta (1ª derivada dos MFCC)
+        delta2_mean,     # 13 coeficientes Delta-Delta (2ª derivada dos MFCC)
+        [spec_centroid], # 1 valor: centroide espectral
+        [spec_bw],       # 1 valor: largura de banda espectral
+        contrast,        # 7 valores: contraste espectral
+        [rolloff],       # 1 valor: roll-off espectral
+        [zcr],           # 1 valor: taxa de cruzamento por zero
+        [rms],           # 1 valor: energia RMS
+        chroma           # 12 valores: intensidade das notas musicais (chroma)
+        # Total: 13 + 13 + 13 + 1 + 1 + 7 + 1 + 1 + 1 + 12 = 63
     ])
 
     return features

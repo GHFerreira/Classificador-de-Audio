@@ -39,7 +39,7 @@ class PulseBackground(QWidget):
 
         # Botão circular central com ícone PNG
         self.button = QPushButton("", self)
-        self.button.setIcon(QIcon("./icone.png"))
+        self.button.setIcon(QIcon("./imgs/icone.png"))
         self.button.setIconSize(QSize(80, 80))
         self.button.setFixedSize(100, 100)
         self.button.setStyleSheet("""

@@ -9,3 +9,4 @@ streamlit
 tensorflow
 tqdm
 seaborn
+PyQt5
