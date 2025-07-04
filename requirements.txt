@@ -7,3 +7,5 @@ matplotlib
 joblib
 streamlit
 tensorflow
+tqdm
+seaborn

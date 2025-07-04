@@ -4,7 +4,7 @@ import pandas as pd
 
 # PATH
 CSV_PATH = "./ESC-50-master/meta/esc50.csv"
-AUDIO_PATH = "./ESC-50-master/audio"
+
 
 # Classes
 CLASSES_USADAS = [
@@ -21,4 +21,4 @@ print("Total por classe:")
 print(df_filtrado['category'].value_counts())
 
 # Novo filtrado
-df_filtrado.to_csv("./esc50_filtrado.csv", index=False)
+df_filtrado.to_csv("./data/esc50_filtrado.csv", index=False)
