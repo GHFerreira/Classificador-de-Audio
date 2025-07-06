@@ -176,7 +176,7 @@ O procedimento consistiu nas seguintes etapas:
 y, sr = librosa.load(caminho_audio, sr=44100)
 ```
 
-2) Extração de 13 MFCCs (Mel-Frequency Cepstral Coefficients):
+2) **Extração de 13 MFCCs (Mel-Frequency Cepstral Coefficients):**
 Os MFCCs representam o contorno espectral do áudio em uma escala logarítmica que simula a forma como o ouvido humano percebe as frequências. São amplamente utilizados em tarefas de reconhecimento de fala e sons ambientais por capturarem de forma eficiente as características perceptivas do som.
 
 ```bash
