@@ -176,8 +176,8 @@ O procedimento consistiu nas seguintes etapas:
 y, sr = librosa.load(caminho_audio, sr=44100)
 ```
 
-2) **Extração de 13 MFCC's (Mel-Frequency Cepstral Coefficients):**
-Representam a forma do espectro sonoro e são amplamente utilizados em reconhecimento de fala e sons ambientais.
+2) Extração de 13 MFCCs (Mel-Frequency Cepstral Coefficients):
+Os MFCCs representam o contorno espectral do áudio em uma escala logarítmica que simula a forma como o ouvido humano percebe as frequências. São amplamente utilizados em tarefas de reconhecimento de fala e sons ambientais por capturarem de forma eficiente as características perceptivas do som.
 
 ```bash
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=N_MFCC)
@@ -276,7 +276,7 @@ dump(scaler, "./models/scaler.joblib")
 ```
 
 Para o vetor **y**, que contém as "etiquetas" de cada feature, é usado LabelEncoder para codificar numericamente essas classes.
-Depois, é usado one-hot enconding para representar vetroialmente essa classe dentro do conjunto.
+Depois, é usado one-hot enconding para representar vetorialmente essa classe dentro do conjunto.
 Isso é necessário para que a função de saída 'Softmax' na rede seja usada.
 
 ```bash
@@ -334,13 +334,13 @@ A interface segue um modelo simples, com o seguinte fluxo de interação:
 
 A interface tem 3 telas correspondentes e podem ser vistas abaixo:
 
-1) A estrutura do app é simples, composta apenas por um botão e uma barra que representa o volume, presente no canto inferior direito.
+1) A estrutura do app é simples, composta apenas por um botão e uma barra que representa o volume do microfone, presente no canto inferior direito.
 
 <p align="center">
   <img src="imgs\tela1.png" alt="" width="400">
 </p><br>
 
-2) Ao clicar no botão, uma animação é iniciada, e uma mensagem de "gravando" é exibida, para mostrar ao usuário que a captação de áudio está ativa por 5 segundos. O nível do microfone pode ser monitorado pela barra já citada.
+2) Ao clicar no botão, uma animação é iniciada, e uma mensagem de "gravando" é exibida, para mostrar ao usuário que a captação de áudio está ativa por 5 segundos.
 
 <p align="center">
   <img src="imgs\tela2.png" alt="" width="400">
